@@ -1,14 +1,18 @@
 import java.io.FileOutputStream;
+import java.security.MessageDigest;
 
 /**
  * Created by lschubert on 11/15/15.
  */
 public class GenesisCreator {
     public static void main(String[] args)throws Exception{
-        byte[] genBlockByteView = {0x4A, 0x5B};
+        String blockStringView = "b:n:0:nd::dn:";
+        MessageDigest digest = MessageDigest.getInstance("SHA-512");
+        String firstHash = new String(digest.digest("0".getBytes()));
+        blockStringView = blockStringView + firstHash +":n:b";
 
         FileOutputStream fos = new FileOutputStream("genesisBlock.b");
-        fos.write(genBlockByteView);
+        fos.write(blockStringView.getBytes());
         fos.close();
 
     }
