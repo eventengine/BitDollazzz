@@ -1,0 +1,6 @@
+11/15
+use b64 for saving files.
+
+11/16
+the miner is not very powerful due to the lack of varying array test sizes.
+need to add transactions to the blocks to be able to create blockchain.

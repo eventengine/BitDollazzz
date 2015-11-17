@@ -8,13 +8,14 @@ import java.util.Random;
  * this will take an array from a block interpreter and find a new hash value to match for the next block.
  */
 public class BlockMinerTest {
-    final int ZEROS = 2;
+    final int ZEROS = 4;
     private byte[] newMatch;
     private byte[] result;
 
     public BlockMinerTest(byte[] b) throws Exception{
         boolean matchFound = false;
         //static size for test bytes might have unwanted side effect. rethink this.
+        //this seems to affect the running time because of the fact that it greatly narrows the possible test values.
         byte[] testBytes = new byte[64];
         MessageDigest digest = MessageDigest.getInstance("SHA-512");
         Random r = new Random();
@@ -29,7 +30,7 @@ public class BlockMinerTest {
             System.arraycopy(testBytes,0,testHash,64,64);
 
             byte[] newHash = digest.digest(testHash);
-            System.out.println(Arrays.toString(newHash));
+            //System.out.println(Arrays.toString(newHash));
             //check if first 4 bytes are 0. if yes found
             boolean correctZero = true;
             for(int i =0; i<ZEROS;i++){
