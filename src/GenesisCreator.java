@@ -3,6 +3,10 @@ import java.security.MessageDigest;
 
 /**
  * Created by lschubert on 11/15/15.
+ *
+ * this was the first attempt of making a genesis block.
+ * why didn't it work? who the fuck knows tbh.
+ * one thing i do know is that i need to use base64 encoding before storing the block.
  */
 public class GenesisCreator {
     public static void main(String[] args)throws Exception{
